@@ -1,8 +1,10 @@
 import { ApplicationCommandData, CommandInteraction } from 'discord.js';
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
-import * as fs from 'fs';
+import { getLogger } from './util/logger';
 import "dotenv/config";
+
+const logger = getLogger("CommandSubmit");
 
 type Command = {
     command: ApplicationCommandData,
@@ -15,16 +17,16 @@ export default {
         
         (async () => {
             try {
-                console.log('Started refreshing application (/) commands.');
+                logger.info('Started refreshing application (/) commands.');
 
                 await rest.put(
-                    Routes.applicationGuildCommands(process.env.CLIENT_ID!, "561538306999844885"),
+                    Routes.applicationCommands(process.env.CLIENT_ID!),
                     { body: Array.from(commands.values()).map(command => command.command) },
                 );
 
-                console.log(`Successfully reloaded ${commands.size} commands.`);
+                logger.info(`Successfully reloaded ${commands.size} commands.`);
             } catch (error) {
-                console.error(error);
+                logger.error(error as string);
             }
         })();
     }
