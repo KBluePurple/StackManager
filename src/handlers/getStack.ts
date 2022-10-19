@@ -10,10 +10,7 @@ export default {
         }
 
         if (storage.stackData[user.id] === undefined) {
-            storage.stackData[user.id] = {
-                plus: 0,
-                minus: 0,
-            };
+            storage.stackData[user.id] = { value: 0 };
         }
 
         message.reply(`현재 **${user.nickname}**님의 스택은 ${storage.stackData[user.id]}개 입니다.`);

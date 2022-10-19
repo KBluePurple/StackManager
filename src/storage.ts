@@ -1,8 +1,7 @@
 import * as fs from "fs";
 
 export type StackData = {
-    plus: number;
-    minus: number;
+    value: number;
 };
 
 export default new class {

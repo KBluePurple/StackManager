@@ -23,9 +23,8 @@ const func = async () => {
         await import(`./commands/${commandFile}`).then(command => {
             commands.set(command.default.command.name, command.default);
         });
-
-        commandSubmit.registerCommands(commands);
     }
+    commandSubmit.registerCommands(commands);
 };
 
 func();
