@@ -4,7 +4,7 @@ import storage from '../storage';
 
 export default {
     command: new SlashCommandBuilder()
-        .setName('제거')
+        .setName('초기화')
         .setDescription('정보를 확인합니다.')
         .addUserOption(option => option
             .setName('유저')
@@ -28,7 +28,7 @@ export default {
 
         const embed = {
             title: "StackManager",
-            description: `${interaction.user.username}님의 스택을 초기화합니다.`,
+            description: `${member.nickname ?? user.username}님의 스택을 초기화합니다.`,
             color: 0x999999,
             fields: [
                 {

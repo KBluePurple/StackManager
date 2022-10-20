@@ -35,7 +35,7 @@ export default {
 
         const embed = {
             title: "StackManager",
-            description: `${interaction.user.username}님의 스택을 추가합니다.`,
+            description: `${member.nickname ?? user.username}님의 스택을 추가합니다.`,
             color: 0x999999,
             fields: [
                 {

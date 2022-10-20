@@ -23,7 +23,7 @@ export default {
 
         const embed = {
             title: "StackManager",
-            description: `${interaction.user.username}님의 정보`,
+            description: `${member.nickname ?? user.username}님의 정보`,
             color: 0x999999,
             fields: [
                 {
