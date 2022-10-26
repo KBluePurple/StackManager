@@ -5,7 +5,7 @@ import storage from '../storage';
 export default {
     command: new SlashCommandBuilder()
         .setName('제거')
-        .setDescription('정보를 확인합니다.')
+        .setDescription('스택을 제거합니다.')
         .addUserOption(option => option
             .setName('유저')
             .setDescription('유저를 선택하세요.')

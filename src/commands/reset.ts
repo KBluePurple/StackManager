@@ -5,7 +5,7 @@ import storage from '../storage';
 export default {
     command: new SlashCommandBuilder()
         .setName('초기화')
-        .setDescription('정보를 확인합니다.')
+        .setDescription('유저의 스택을 초기화 합니다.')
         .addUserOption(option => option
             .setName('유저')
             .setDescription('유저를 선택하세요.')
@@ -41,6 +41,22 @@ export default {
                 text: "기타 문의는 유원석에게 부탁드립니다.",
             }
         }
+
+        interaction.guild?.members.fetch().then((members) => {
+            members.forEach((member) => {
+                let info = storage.stackData[member?.id as string];
+
+                if (info === undefined) {
+                    info = storage.stackData[member?.id as string] = { value: 0 };
+                    storage.save();
+                }
+                else {
+                    info.value = 0;
+                    storage.stackData[member?.id as string] = info;
+                    storage.save();
+                }
+            });
+        });
 
         interaction.reply({ embeds: [embed], ephemeral: true });
     },

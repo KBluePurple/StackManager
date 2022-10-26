@@ -25,6 +25,8 @@ const func = async () => {
         });
     }
     commandSubmit.registerCommands(commands);
+
+    logger.info(`Loaded ${commands.size} commands.`);
 };
 
 func();
@@ -57,6 +59,8 @@ client.on("ready", () => {
 
 client.on("interactionCreate", async (interaction: Interaction) => {
     if (!interaction.isCommand()) return;
+    console.log(`Received command ${interaction.commandName}`);
+    
 
     if (commands.has(interaction.commandName)) {
         commands.get(interaction.commandName)?.handler(interaction);
